@@ -3,9 +3,10 @@ pipeline {
         dockerfile true
     }
     stages {
-        stage('Test') {
+        stage('Build') {
             steps {
-                sh 'node --version'
+                sh 'docker build -t test/node-web-app .'
+		sh 'docker run -p 3000:3000 -d test/node-web-app'
             }
         }
     }
