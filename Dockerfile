@@ -4,8 +4,6 @@ WORKDIR /usr/src/app
 
 COPY package*.json ./
 
-RUN npm i express
-
 RUN yarn install --network-timeout 1000000
 
 COPY . .
