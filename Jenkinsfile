@@ -4,7 +4,12 @@ node {
 		checkout scm
         }
         stage('Build') {
-			sh 'new Date()'
+  		steps {
+    			script {
+        			def now = new Date()
+        			println now.format("yyMMdd.HHmm", TimeZone.getTimeZone('UTC'))
+    			}
+  		} 
 			sh 'docker -v'
 			sh 'docker stop test || true && docker rm test || true'
             sh 'docker build -t test/node-web-app .'
