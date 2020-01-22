@@ -4,7 +4,8 @@ node {
 		checkout scm
         }
         stage('Build') {
-			println('time' + aSlave.getComputer().getConnectTime())
+			def now = new Date()
+			println now
 			sh 'docker -v'
 			sh 'docker stop test || true && docker rm test || true'
             sh 'docker build -t test/node-web-app .'
