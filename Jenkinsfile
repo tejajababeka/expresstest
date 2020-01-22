@@ -4,7 +4,7 @@ node {
 		checkout scm
         }
         stage('Build') {
-			echo "TimeStamp: ${currentBuild.startTimeInMillis}"
+			echo "TimeStamp: ${Util.getTimeSpanString(System.currentTimeMillis())}"
 			sh 'docker -v'
 			sh 'docker stop test || true && docker rm test || true'
             sh 'docker build -t test/node-web-app .'
