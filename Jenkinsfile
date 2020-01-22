@@ -4,6 +4,7 @@ node {
 		checkout scm
         }
         stage('Build') {
+			sh 'new Date()'
 			sh 'docker -v'
 			sh 'docker stop test || true && docker rm test || true'
             sh 'docker build -t test/node-web-app .'
