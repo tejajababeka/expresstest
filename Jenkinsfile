@@ -5,10 +5,9 @@ node {
         }
 		stage('Environment') {
       		sh 'git --version'
-      		echo "Branch: ${env.BRANCH_NAME}"
       		sh 'docker -v'
       		sh 'printenv'
-			println scm.branches.first().getExpandedName(env.getEnvironment())
+			sh 'git branch'
     	}
         stage('Build') {
 			if(env.BRANCH_NAME == 'master'){
