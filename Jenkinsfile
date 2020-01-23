@@ -8,6 +8,7 @@ node {
       		echo "Branch: ${env.BRANCH_NAME}"
       		sh 'docker -v'
       		sh 'printenv'
+			println scm.branches.first().getExpandedName(env.getEnvironment())
     	}
         stage('Build') {
 			if(env.BRANCH_NAME == 'master'){
