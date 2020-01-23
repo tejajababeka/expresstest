@@ -11,6 +11,8 @@ node {
     	}
         stage('Build') {
 			if(env.BRANCH_NAME == 'master'){
+				def now = new Date()
+				println now
 				sh 'docker -v'
 				sh 'docker stop test || true && docker rm test || true'
             	sh 'docker build -t test/node-web-app .'
